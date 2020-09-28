@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Patolandis</string>
+    <string name="hintlogin"> Como desejas ser chamado? </string>
+    <string name="descricao"> Pato em uma montanha russa</string>
+    <string name="logarbotao"> LOGAR </string>
+    <string name="title_activity_principal">PrincipalActivity</string>
+    <string name="txtpatolandia"> PATOLÂNDIA </string>
+    <string name="txtola"> Olá, </string>
+    <string name="desejo"> O que desejas hoje?</string>
+    <string name="txtmontanha"> Montanha-Russa </string>
+    <string name="txttunel"> Patúnel Aquático</string>
+    <string name="txtcarrosel"> Patossel </string>
+    <string name="txtcheque"> Cheque o mecanismo de pesquisa de nosso parceiro</string>
+    <string name="txtendereço"> Localizada em Itupeva, nossa montanha provocará muita emoção e adrenalina, e aí? Vai encarar?</string>
+    <string name="endmontanha"> Endereço: Itupeva - SP, 13295-000 \nDistância da Montanha</string>
+    <string name="endroda"> Endereço: 13280-000, Vinhedo - SP  \nDistância da Roda-Gigante:</string>
+    <string name="txtenderecoroda"> Nossa Roda-Gigante é o ponto mais calmo do seu passeio, onde poderás aproveitar a paisagem do parque por completo e sentir aquele vento no cabelo estando a 88 metros de altura</string>
+    <string name="txtrodagig"> Roda-Gigante </string>
+    <string name="txtpatunelend">Logo próximo à Rodovia dos Bandeirantes, localiza-se o nosso radical tunel aquático, uma aventura paa os dias mais quentes</string>
+    <string name="endpatunel"> Rod. dos Bandeirantes, KM 72, Vinhedo - SP, 13280-000 \nDistância do Patunel</string>
+    <string name="txtpatosselend"> Nosso carrossel com patos é uma atração que todas a criançada vai adorar! Um ótimo lugar para relaxar enquanto as crianças se divertem</string>
+    <string name="endpatossel"> Jardim Vista Alegre, Louveira - SP, 13290-000 \nDistância do Patossel</string>
+
+</resources>

@@ -8,20 +8,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     EditText login;
-    private final String VALORES_TELA1 = "com.example.patolandis";
+    Boolean favorito;
     public final static String EXTRA_MESSAGE_LOGIN ="com.example.patolandis.LOGIN";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         login =(EditText) findViewById(R.id.edtlogin);
 
-        if (savedInstanceState != null)
-        {
-            
-        }
     }
     public void Logar (View view)
     {

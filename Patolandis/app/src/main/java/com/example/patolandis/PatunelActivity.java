@@ -19,6 +19,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,16 +34,18 @@ import java.util.Locale;
 
 public class PatunelActivity extends AppCompatActivity implements OnSuccessListener<Location>, OnFailureListener {
     private ViewPager2 viewPager2;
+    ImageView coracao;
     TextView endereco;
     double latitude, longitude, latitude2, longitude2;
     public final static int CODIGO_LOCALIZA = 1;
-
+    public String PATUNEL_COD = "com.example.patolandis.PatunelActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patunel);
-        endereco = (TextView) findViewById(R.id.txtendereco);
-
+        endereco = (TextView) findViewById(R.id.txtenderecopt);
+        coracao= (ImageView) findViewById(R.id.imgfavpatunel);
+        new SharedFav( this, coracao, PATUNEL_COD);
         //viewpager
         viewPager2 = findViewById(R.id.viewPagerslider);
         List<Slider> sliders = new ArrayList<>();
@@ -68,7 +71,7 @@ public class PatunelActivity extends AppCompatActivity implements OnSuccessListe
     // localização
     @Override
     public void onFailure(@NonNull Exception e) {
-
+        Log.e("Falha onFailure", "FALHOU");
     }
     float[] results = new float[1];
     @Override
@@ -86,6 +89,7 @@ public class PatunelActivity extends AppCompatActivity implements OnSuccessListe
                 //distância entre os pontos e resultado convertido para quilômetros
                 Location.distanceBetween(latitude,longitude,latitude2,longitude2, results);
                 float resultados = results[0] / 1000;
+
                 // resultado adicionado à textview
                 endereco.setText(String.valueOf(resultados+"km"));
             } catch (Exception e) {

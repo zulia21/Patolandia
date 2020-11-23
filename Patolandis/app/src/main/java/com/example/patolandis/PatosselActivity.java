@@ -12,6 +12,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,15 +27,18 @@ import java.util.Locale;
 
 public class PatosselActivity extends AppCompatActivity implements OnSuccessListener<Location>, OnFailureListener {
     private ViewPager2 viewPager2;
+    ImageView coracao;
     TextView endereco;
     double latitude, longitude, latitude2, longitude2;
     public final static int CODIGO_LOCALIZA = 1;
+    public String PATOSSEL_COD = "com.example.patolandis.PatosselActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patossel);
-        endereco = (TextView) findViewById(R.id.txtendereco);
-
+        endereco = (TextView) findViewById(R.id.txtenderecops);
+        coracao= (ImageView) findViewById(R.id.imgfavpatossel);
+        new SharedFav( this, coracao, PATOSSEL_COD);
         //viewpager
         viewPager2 = findViewById(R.id.viewPagerslider);
         List<Slider> sliders = new ArrayList<>();

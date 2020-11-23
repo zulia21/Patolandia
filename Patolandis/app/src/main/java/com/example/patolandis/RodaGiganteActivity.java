@@ -12,6 +12,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,14 +27,19 @@ import java.util.Locale;
 
 public class RodaGiganteActivity extends AppCompatActivity implements OnSuccessListener<Location>, OnFailureListener {
     private ViewPager2 viewPager2;
+    ImageView coracao;
     TextView endereco;
     double latitude, longitude, latitude2, longitude2;
     public final static int CODIGO_LOCALIZA = 1;
+
+    public String RODA_COD = "com.example.patolandis.RodaGiganteActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_roda_gigante);
-        endereco = (TextView) findViewById(R.id.txtendereco);
+        endereco = (TextView) findViewById(R.id.txtenderecorg);
+        coracao= (ImageView) findViewById(R.id.imgfavrodagig);
+        new SharedFav( this, coracao, RODA_COD);
         viewPager2 = findViewById(R.id.viewPagerslider);
         List<Slider> sliders = new ArrayList<>();
         sliders.add(new Slider(R.drawable.roda));

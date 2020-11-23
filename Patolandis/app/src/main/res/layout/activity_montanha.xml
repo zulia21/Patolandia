@@ -8,105 +8,122 @@
     android:orientation="vertical"
     tools:context=".MontanhaActivity">
 
-    <TextView
-        android:id="@+id/txtpatolandia2"
-        android:layout_width="171dp"
-        android:layout_height="60dp"
-        android:layout_below="@+id/imageView"
-        android:layout_alignEnd="@+id/imageView"
-        android:layout_alignBottom="@+id/imageView"
-        android:layout_alignParentStart="true"
-        android:fontFamily="@font/amatica_sc"
-        android:text="@string/txtpatolandia"
-        android:textAlignment="gravity"
-        android:textColor="#FFD34F"
-        android:textSize="40sp"
+    <include
+        android:id="@+id/include"
+        layout="@layout/basic_atracao"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="21dp"
+        tools:layout_editor_absoluteY="141dp" />
+
+    <ImageView
+        android:id="@+id/imgadiciona"
+        android:layout_width="29dp"
+        android:layout_height="27dp"
+        android:onClick="adicionar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.258"
+        app:layout_constraintHorizontal_bias="0.91"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/include"
+        app:layout_constraintVertical_bias="0.522"
+        app:srcCompat="@drawable/add" />
+
+    <ImageView
+        android:id="@+id/imgfavmontanha"
+        android:layout_width="28dp"
+        android:layout_height="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.911"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.092" />
+        app:layout_constraintVertical_bias="0.586"
+        app:srcCompat="@drawable/heartempty" />
 
     <TextView
-        android:id="@+id/txttitulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/txtenderecomr"
+        android:layout_width="111dp"
+        android:layout_height="22dp"
         android:fontFamily="@font/amatica_sc"
-        android:text="@string/txtmontanha"
-        android:textSize="28sp"
+        android:textAlignment="center"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.163"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.045" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.926" />
+
+    <TextView
+        android:id="@+id/txtalturaminimamr"
+        android:layout_width="106dp"
+        android:layout_height="22dp"
+        android:fontFamily="@font/amatica_sc"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.859"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.926" />
+
+    <TextView
+        android:id="@+id/txtendmontanha"
+        android:layout_width="315dp"
+        android:layout_height="25dp"
+        android:fontFamily="@font/amatica_sc"
+        android:text="@string/endmontanha"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.375"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.824" />
+
+    <TextView
+        android:id="@+id/txtmontanhadesc"
+        android:layout_width="344dp"
+        android:layout_height="65dp"
+        android:fontFamily="@font/amatica_sc"
+        android:text="@string/txtmontanhadesc"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.694" />
+
+    <TextView
+        android:id="@+id/txtmontanhatt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/anton"
+        android:text="@string/txtmontanha"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.181"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.583" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPagerslider"
-        android:layout_width="382dp"
-        android:layout_height="220dp"
+        android:layout_width="369dp"
+        android:layout_height="210dp"
 
+        android:layout_marginBottom="380dp"
         android:layoutDirection="ltr"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.474"
+        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.245" />
+        app:layout_constraintVertical_bias="0.01">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="161dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="24dp"
-        android:contentDescription="@string/descricao"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.864"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/patin" />
-
-    <TextView
-        android:id="@+id/txtendereco"
-        android:layout_width="207dp"
-        android:layout_height="26dp"
-        android:fontFamily="@font/amatica_sc"
-        android:textAlignment="textStart"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.078"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.849" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="374dp"
-        android:layout_height="55dp"
-        android:fontFamily="@font/amatica_sc"
-        android:text="@string/txtendereço"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtendereco"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.378"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewPagerslider"
-        app:layout_constraintVertical_bias="0.225" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="257dp"
-        android:layout_height="48dp"
-        android:fontFamily="@font/amatica_sc"
-        android:text="@string/endmontanha"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtendereco"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.103"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="1.0" />
+    </androidx.viewpager2.widget.ViewPager2>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

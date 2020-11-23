@@ -50,7 +50,7 @@ public class PrincipalActivity extends AppCompatActivity implements SensorEventL
 
         nomelogin = (TextView) findViewById(R.id.txtnomelog);
         Intent intent = getIntent();
-        String Login =intent.getStringExtra(MainActivity.EXTRA_MESSAGE_LOGIN);
+        String Login =intent.getStringExtra(LoginActivity.EXTRA_MESSAGE_LOGIN);
         nomelogin.setText(Login);
     }
     //sensor que muda a lanterna
@@ -91,8 +91,6 @@ public class PrincipalActivity extends AppCompatActivity implements SensorEventL
     {
         Intent chameIntent = new Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
         startActivityForResult(Intent.createChooser(chameIntent,"Selecione um contato"), EXTRA_COD);
-
-
     }
     //onclick de cada botão.
     public void rodaGigantar (View view)
@@ -167,7 +165,7 @@ public class PrincipalActivity extends AppCompatActivity implements SensorEventL
     public void onResume() {
         super.onResume();
         sensorManager.registerListener(this,luzes,SensorManager.SENSOR_DELAY_NORMAL);
-    }
+}
     @Override
     public  void onPause(){
         super.onPause();

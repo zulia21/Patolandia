@@ -8,15 +8,29 @@
     tools:context=".RodaGiganteActivity">
 
     <ImageView
+        android:id="@+id/imgadiciona4"
+        android:layout_width="29dp"
+        android:layout_height="27dp"
+        android:layout_marginBottom="324dp"
+        android:onClick="adicionar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.869"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/include"
+        app:layout_constraintVertical_bias="0.539"
+        app:srcCompat="@drawable/add" />
+
+    <ImageView
         android:id="@+id/imgfavrodagig"
         android:layout_width="28dp"
         android:layout_height="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.911"
+        app:layout_constraintHorizontal_bias="0.869"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.564"
+        app:layout_constraintVertical_bias="0.586"
         app:srcCompat="@drawable/heartempty" />
 
     <include
@@ -27,7 +41,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPagerslider"

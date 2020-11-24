@@ -1,5 +1,6 @@
 package com.example.patolandis;
 
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +11,14 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.makeramen.roundedimageview.RoundedImageView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.SliderViewHolder> {
-    private List<Slider> slideritems;
+    private List<SliderItem> slideritems;
     private ViewPager2 viewPager2;
 
-     Adapter(List<Slider> slideritems, ViewPager2 viewPager2) {
+     Adapter(List<SliderItem> slideritems, ViewPager2 viewPager2) {
         this.slideritems = slideritems;
         this.viewPager2 = viewPager2;
     }
@@ -51,10 +53,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.SliderViewHolder> {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageSlider);
         }
-        void setImage(Slider slider)
-        {
-            imageView.setImageResource(slider.getImagens());
+        void setImage(SliderItem sliderItem) { imageView.setImageURI(sliderItem.getImagens()); }
+
+
         }
+        public void addImage(Uri uri) {
+        slideritems.add(new SliderItem(uri));
+        notifyItemInserted(slideritems.size() - 1);
     }
 
 

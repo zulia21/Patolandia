@@ -35,4 +35,9 @@ public class LoginActivity extends AppCompatActivity {
      startActivity(intent);
 
     }
+    public void cadastrar(View view)
+    {
+        Intent intent = new Intent(this, NonCadastrado.class);
+        startActivity(intent);
+    }
 }

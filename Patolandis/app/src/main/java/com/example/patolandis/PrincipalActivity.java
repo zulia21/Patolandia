@@ -30,9 +30,7 @@ public class PrincipalActivity extends AppCompatActivity implements SensorEventL
     ImageView flashlight;
     private Sensor luzes;
     private SensorManager sensorManager;
-    TextView nomelogin, txtclaridade, txtindicacoes;
-    private AlertDialog.Builder dialogbuilder;
-    private AlertDialog alertdialog;
+    TextView nomelogin;
     boolean temLanterna, lanternaLigada = false;
     public static final int EXTRA_COD = 1;
     @Override

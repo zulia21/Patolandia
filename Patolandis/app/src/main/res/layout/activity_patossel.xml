@@ -7,6 +7,20 @@
     android:background="#F67247"
     tools:context=".PatosselActivity">
 
+    <ImageView
+        android:id="@+id/imgadiciona3"
+        android:layout_width="29dp"
+        android:layout_height="27dp"
+        android:layout_marginBottom="316dp"
+        android:onClick="adicionar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.869"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/include"
+        app:layout_constraintVertical_bias="0.539"
+        app:srcCompat="@drawable/add" />
+
     <include
         layout="@layout/basic_atracao"
         android:layout_width="match_parent"
@@ -15,7 +29,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/imgfavpatossel"
@@ -23,10 +38,10 @@
         android:layout_height="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.911"
+        app:layout_constraintHorizontal_bias="0.869"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.564"
+        app:layout_constraintVertical_bias="0.595"
         app:srcCompat="@drawable/heartempty" />
 
     <androidx.viewpager2.widget.ViewPager2

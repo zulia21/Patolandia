@@ -5,18 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FB7C53"
+    android:onClick="cadastrar"
     tools:context=".NonCadastrado">
 
     <EditText
-        android:id="@+id/edtlogin"
+        android:id="@+id/edtlogincad"
         android:layout_width="192dp"
-        android:layout_height="35dp"
+        android:layout_height="40dp"
         android:layout_gravity="center"
         android:layout_marginTop="172dp"
         android:autofillHints=""
         android:ems="10"
-        android:inputType="text"
-        android:textColor="@android:color/secondary_text_dark"
+        android:fontFamily="@font/amatica_sc"
+        android:inputType="textPersonName|text"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.307"
         app:layout_constraintStart_toEndOf="@+id/txtlogin4"
@@ -25,46 +27,49 @@
     <EditText
         android:id="@+id/edtapelido"
         android:layout_width="192dp"
-        android:layout_height="35dp"
+        android:layout_height="40dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:autofillHints=""
         android:ems="10"
+        android:fontFamily="@font/amatica_sc"
         android:inputType="text"
-        android:textColor="@android:color/secondary_text_dark"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.677"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.26"
+        app:layout_constraintStart_toEndOf="@+id/hintapelido"
         app:layout_constraintTop_toBottomOf="@+id/edtnome" />
 
     <EditText
         android:id="@+id/edtdatanasc"
         android:layout_width="115dp"
-        android:layout_height="35dp"
+        android:layout_height="40dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:autofillHints=""
         android:ems="10"
+        android:fontFamily="@font/amatica_sc"
         android:inputType="date"
-        android:textColor="@android:color/secondary_text_dark"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.76"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.28"
+        app:layout_constraintStart_toEndOf="@+id/hintdatanasc"
         app:layout_constraintTop_toBottomOf="@+id/edtapelido" />
 
     <EditText
-        android:id="@+id/edtlogin7"
+        android:id="@+id/edtcelular"
         android:layout_width="192dp"
-        android:layout_height="35dp"
+        android:layout_height="40dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:autofillHints=""
         android:ems="10"
-        android:inputType="date"
-        android:textColor="@android:color/secondary_text_dark"
+        android:fontFamily="@font/amatica_sc"
+        android:inputType="phone"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.677"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toEndOf="@+id/hintcelular"
         app:layout_constraintTop_toBottomOf="@+id/edtdatanasc" />
 
     <TextView
@@ -72,40 +77,42 @@
         android:layout_width="wrap_content"
         android:layout_height="34dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginTop="16dp"
         android:enabled="false"
         android:fontFamily="@font/amatica_sc"
         android:hint="@string/hintlogin"
         android:text="@string/txtnome"
         android:textColor="@android:color/primary_text_dark_nodisable"
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/edtnome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hintsenha" />
 
     <TextView
         android:id="@+id/hintapelido"
-        android:layout_width="52dp"
+        android:layout_width="wrap_content"
         android:layout_height="34dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginTop="16dp"
         android:enabled="false"
         android:fontFamily="@font/amatica_sc"
         android:hint="@string/txtapelido"
         android:text="@string/txtapelido"
         android:textColor="@android:color/primary_text_dark_nodisable"
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/edtapelido"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hintnome" />
 
     <TextView
         android:id="@+id/hintdatanasc"
-        android:layout_width="118dp"
+        android:layout_width="wrap_content"
         android:layout_height="34dp"
         android:layout_gravity="center"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="208dp"
         android:enabled="false"
         android:fontFamily="@font/amatica_sc"
         android:hint="@string/txtapelido"
@@ -113,15 +120,17 @@
         android:textColor="@android:color/primary_text_dark_nodisable"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.27"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hintapelido" />
 
     <TextView
         android:id="@+id/hintcelular"
-        android:layout_width="49dp"
+        android:layout_width="wrap_content"
         android:layout_height="34dp"
         android:layout_gravity="center"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="276dp"
         android:enabled="false"
         android:fontFamily="@font/amatica_sc"
         android:hint="@string/txtapelido"
@@ -129,6 +138,8 @@
         android:textColor="@android:color/primary_text_dark_nodisable"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.22"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hintdatanasc" />
 
     <TextView
@@ -136,7 +147,7 @@
         android:layout_width="wrap_content"
         android:layout_height="34dp"
         android:layout_gravity="center"
-        android:layout_marginTop="204dp"
+        android:layout_marginTop="208dp"
         android:enabled="false"
         android:fontFamily="@font/amatica_sc"
         android:hint="@string/hintlogin"
@@ -144,7 +155,7 @@
         android:textColor="@android:color/primary_text_dark_nodisable"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.212"
+        app:layout_constraintHorizontal_bias="0.244"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtpatolandia2" />
 
@@ -153,7 +164,8 @@
         android:layout_width="wrap_content"
         android:layout_height="34dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="272dp"
         android:enabled="false"
         android:fontFamily="@font/amatica_sc"
         android:hint="@string/txtsenha"
@@ -161,39 +173,39 @@
         android:textColor="@android:color/primary_text_dark_nodisable"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.217"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtlogin4" />
 
     <EditText
-        android:id="@+id/edsenha"
+        android:id="@+id/edtsenhacad"
         android:layout_width="192dp"
-        android:layout_height="35dp"
+        android:layout_height="40dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:autofillHints=""
         android:ems="10"
+        android:fontFamily="@font/amatica_sc"
         android:inputType="text"
-        android:textColor="@android:color/secondary_text_dark"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.307"
-        app:layout_constraintStart_toEndOf="@+id/txtlogin4"
-        app:layout_constraintTop_toBottomOf="@+id/edtlogin" />
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toEndOf="@+id/hintsenha"
+        app:layout_constraintTop_toBottomOf="@+id/edtlogincad" />
 
     <EditText
         android:id="@+id/edtnome"
         android:layout_width="192dp"
-        android:layout_height="35dp"
+        android:layout_height="40dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:autofillHints=""
         android:ems="10"
+        android:fontFamily="@font/amatica_sc"
         android:inputType="text"
-        android:textColor="@android:color/secondary_text_dark"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.677"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edsenha" />
+        app:layout_constraintHorizontal_bias="0.301"
+        app:layout_constraintStart_toEndOf="@+id/hintnome"
+        app:layout_constraintTop_toBottomOf="@+id/edtsenhacad" />
 
     <TextView
         android:id="@+id/txtpatolandia2"
@@ -218,7 +230,7 @@
     <TextView
         android:id="@+id/txtpatolandia3"
         android:layout_width="125dp"
-        android:layout_height="52dp"
+        android:layout_height="45dp"
         android:layout_below="@+id/imageView"
         android:layout_alignEnd="@+id/imageView"
         android:layout_alignBottom="@+id/imageView"
@@ -226,13 +238,13 @@
         android:fontFamily="@font/anton"
         android:text="@string/hintcadastro"
         android:textAlignment="gravity"
+        android:textColor="#AAFFD34F"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.519"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.239" />
+        app:layout_constraintVertical_bias="0.243" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -248,14 +260,32 @@
 
     <ImageView
         android:id="@+id/imguser"
-        android:layout_width="96dp"
-        android:layout_height="88dp"
+        android:layout_width="70dp"
+        android:layout_height="62dp"
+        android:onClick="escolherFotodePerfil"
         android:outlineAmbientShadowColor="#CCD6D6D6"
-        app:layout_constraintBottom_toTopOf="@+id/edtlogin"
+        app:layout_constraintBottom_toTopOf="@+id/edtlogincad"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtpatolandia3"
-        app:layout_constraintVertical_bias="0.608"
+        app:layout_constraintVertical_bias="0.47"
         app:srcCompat="@drawable/user" />
+
+    <Button
+        android:id="@+id/btncadastrar"
+        android:layout_width="75dp"
+        android:layout_height="40dp"
+        android:background="#C35836"
+        android:fontFamily="@font/amatica_sc"
+        android:onClick="cadastrar"
+        android:text="@string/txtcadastro"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtcelular"
+        app:layout_constraintVertical_bias="0.428" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

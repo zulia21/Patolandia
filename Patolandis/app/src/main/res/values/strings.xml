@@ -31,5 +31,6 @@
     <string name="txtdata"> Data de Nascimento </string>
     <string name="txtcelular"> Celular </string>
     <string name="txtsenha"> Senha </string>
+    <string name="txtcadastro"> Cadastrar </string>
 
 </resources>

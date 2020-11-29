@@ -126,7 +126,7 @@ public class MontanhaActivity extends AppCompatActivity implements OnSuccessList
         String[] nomes = getFilesDir().list();
         for (int i = 0; i < nomes.length; i++)
         {
-            sliderItems.add(new SliderItem(Uri.fromFile(new File(getFilesDir(), nomes[i]))));
+            this.sliderItems.add(new SliderItem(Uri.fromFile(new File(getFilesDir(), nomes[i]))));
         }
 
 

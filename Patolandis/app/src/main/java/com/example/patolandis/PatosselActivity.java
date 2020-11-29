@@ -50,7 +50,6 @@ public class PatosselActivity extends AppCompatActivity implements OnSuccessList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patossel);
-        Adapter adapter;
         endereco = (TextView) findViewById(R.id.txtenderecops);
         coracao= (ImageView) findViewById(R.id.imgfavpatossel);
         new SharedFav( this, coracao, PATOSSEL_COD);
@@ -102,7 +101,7 @@ public class PatosselActivity extends AppCompatActivity implements OnSuccessList
                 Location.distanceBetween(latitude,longitude,latitude2,longitude2, results);
                 float resultados = results[0] / 1000;
                 // resultado adicionado à textview
-                endereco.setText(String.valueOf(resultados+"km"));
+                endereco.setText(String.valueOf(resultados+""+"km"));
             } catch (Exception e) {
                 Log.e("Exceção", "errors",e );
             }

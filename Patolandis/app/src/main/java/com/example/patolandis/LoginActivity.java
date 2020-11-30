@@ -22,23 +22,27 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         login =(EditText) findViewById(R.id.edtlogincad);
         senha = (EditText) findViewById(R.id.edtsenha);
+
     }
     public void Logar (View view)
     {
-            SQLiteDatabase db = this.openOrCreateDatabase(BancoSQLite.NOME_BANCO, MODE_PRIVATE, null );
-            Cursor cursor;
-            cursor = db.rawQuery("select * from Usuario where Login = ? and Senha  = ?;",new String[]{login.getText().toString(), senha.getText().toString()}, null);
+        BancoSQLite patolandia = new BancoSQLite(this);
+        SQLiteDatabase db = this.openOrCreateDatabase(BancoSQLite.NOME_BANCO, MODE_PRIVATE, null);
+        patolandia.onCreate(db);
+        Cursor cursor;
+        cursor = db.rawQuery("select * from Usuario where Login = ? and Senha  = ?;",new String[]{login.getText().toString(), senha.getText().toString()}, null);
 
-
-            while (cursor.moveToNext())
-            {
-                if (String.valueOf(login.getText()).equals(cursor.getString(1)) && String.valueOf(senha.getText()).equals(cursor.getString(3))) {
-                    Intent intent = new Intent(this, PrincipalActivity.class);
-                    intent.putExtra(EXTRA_MESSAGE_LOGIN, cursor.getString(4));
-                    startActivity(intent);
-                }
+        while (cursor.moveToNext())
+        {
+            if (String.valueOf(login.getText()).equals(cursor.getString(1)) && String.valueOf(senha.getText()).equals(cursor.getString(3))) {
+                Intent intent = new Intent(this, PrincipalActivity.class);
+                intent.putExtra(EXTRA_MESSAGE_LOGIN, cursor.getString(4));
+                startActivity(intent);
+                login.getText().clear();
+                senha.getText().clear();
             }
-            cursor.close();
+        }
+        cursor.close();
 
 
 

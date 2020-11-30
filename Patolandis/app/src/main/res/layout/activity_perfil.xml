@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FB7C53"
+    tools:context=".PerfilActivity">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imguserperf"
+        android:layout_width="226dp"
+        android:layout_height="235dp"
+        android:src="@drawable/carrossel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.155" />
+
+    <LinearLayout
+        android:layout_width="413dp"
+        android:layout_height="395dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imguserperf">
+
+        <TextView
+            android:id="@+id/txthinturserperfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|clip_vertical"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/anton"
+            android:text="@string/txtnome"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txtnomeperf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/amatica_sc"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txthintapelidoperf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|clip_vertical"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/anton"
+            android:text="@string/txtapelido"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txtapelidoperf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/amatica_sc"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txthintcelular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|clip_vertical"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/anton"
+            android:text="@string/txtcelular"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txtcelularperf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/amatica_sc"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txthintdatanasc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|clip_vertical"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/anton"
+            android:text="@string/txtdata"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txtdataperf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/amatica_sc"
+            android:textSize="18sp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

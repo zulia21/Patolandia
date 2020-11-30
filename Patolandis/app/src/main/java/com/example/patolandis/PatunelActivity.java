@@ -55,20 +55,25 @@ public class PatunelActivity extends AppCompatActivity implements OnSuccessListe
         new SharedFav( this, coracao, PATUNEL_COD);
         //viewpager
         viewPager2 = findViewById(R.id.viewPagerslider);
-        sliderItems.add(new SliderItem(Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
-                "://" + getResources().getResourcePackageName(R.drawable.tunel)
-                + '/' + getResources().getResourceTypeName(R.drawable.tunel) + '/' + getResources().getResourceEntryName(R.drawable.tunel))));
-        sliderItems.add(new SliderItem(Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
-                "://" + getResources().getResourcePackageName(R.drawable.tuneltunel)
-                + '/' + getResources().getResourceTypeName(R.drawable.tuneltunel) + '/' + getResources().getResourceEntryName(R.drawable.tuneltunel))));
-        sliderItems.add(new SliderItem(Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
-                "://" + getResources().getResourcePackageName(R.drawable.tuneltuneltunel)
-                + '/' + getResources().getResourceTypeName(R.drawable.tuneltuneltunel) + '/' + getResources().getResourceEntryName(R.drawable.tuneltuneltunel))));
-        sliderItems.add(new SliderItem(Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
-                "://" + getResources().getResourcePackageName(R.drawable.tuneltuneltuneltunel)
-                + '/' + getResources().getResourceTypeName(R.drawable.tuneltuneltuneltunel) + '/' + getResources().getResourceEntryName(R.drawable.tuneltuneltuneltunel))));
-        adicionarImagensSalvas(sliderItems);
+
+        java.util.function.Function<Integer, SliderItem> sliderFrom = (resource) -> {
+
+            return new SliderItem(Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
+                    "://" + getResources().getResourcePackageName(resource)
+                    + '/' + getResources().getResourceTypeName(resource) + '/'
+                    + getResources().getResourceEntryName(resource)));
+
+        };
+
+
+        sliderItems.add(sliderFrom.apply(R.drawable.tunel));
+        sliderItems.add(sliderFrom.apply(R.drawable.tuneltunel));
+        sliderItems.add(sliderFrom.apply(R.drawable.tuneltuneltunel));
+        sliderItems.add(sliderFrom.apply(R.drawable.tuneltuneltuneltunel));
+
+
         adapter = new Adapter(sliderItems, viewPager2);
+        adicionarImagensSalvas(sliderItems);
         viewPager2.setAdapter(this.adapter);
 
         //localização
@@ -119,31 +124,48 @@ public class PatunelActivity extends AppCompatActivity implements OnSuccessListe
         Intent adicionarFoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         startActivityForResult(adicionarFoto, CODIGO_ADICIONAR);
     }
+    private static final String IMAGE_DIRECTORY_NAME = "patunel-images";
     public void adicionarImagensSalvas(List<SliderItem> sliderItems)
     {
-        String[] nomes = getFilesDir().list();
-        for (int i = 0; i < nomes.length; i++)
-        {
-            sliderItems.add(new SliderItem(Uri.fromFile(new File(getFilesDir(), nomes[i]))));
+        File directory = new File(getFilesDir(), IMAGE_DIRECTORY_NAME);
+        if (directory.exists()) {
+
+            String[] nomes = directory.list();
+
+            for (int i = 0; i < nomes.length; i++) {
+                sliderItems.add(new SliderItem(Uri.fromFile(new File(directory, nomes[i]))));
+            }
+
         }
-
-
     }
     public void salvarArquivo(@NonNull Uri uri ) throws IOException
     {
         try {
-            int arquivos = getFilesDir().list().length;
-            File result = new File(getFilesDir(), IMG_PRE + arquivos + 1);
+            File directory = new File(getFilesDir(), IMAGE_DIRECTORY_NAME);
+            if (!directory.exists()) {
+                if (!directory.mkdir()) {
+                    throw new IOException("Falha na criação da pasta");
+                }
+            }
+            int arquivos = directory.list().length;
+
+            File result = new File(directory, IMG_PRE + arquivos + 1);
+
             if (result.exists()) {
                 return;
             }
+
             OutputStream outputStream = new FileOutputStream(result);
             InputStream inputStream = getContentResolver().openInputStream(uri);
+
             byte[] buffer = new byte[4096];
+
             int size;
+
             while ((size = inputStream.read(buffer)) != -1) {
                 outputStream.write(buffer, 0, size);
             }
+
             inputStream.close();
             outputStream.close();
         }

@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -26,17 +27,25 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class PrincipalActivity extends AppCompatActivity implements SensorEventListener {
+
+    public final static String APELIDO = null;
     public final static int CAMERA_LANTERNA = 1;
-    ImageView flashlight;
+
+    ImageView flashlight, fotoperfilusuario;
+
     private Sensor luzes;
     private SensorManager sensorManager;
+
     TextView nomelogin;
+
     boolean temLanterna, lanternaLigada = false;
+    public final static int COD_IMAGEM_SAVE = 0;
     public static final int EXTRA_COD = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
+
         flashlight = (ImageView) findViewById(R.id.imgflashlight);
 
         // lanterninha
@@ -50,6 +59,27 @@ public class PrincipalActivity extends AppCompatActivity implements SensorEventL
         Intent intent = getIntent();
         String Login =intent.getStringExtra(LoginActivity.EXTRA_MESSAGE_LOGIN);
         nomelogin.setText(Login);
+
+        // imagem usuario
+        fotoperfilusuario = (ImageView) findViewById(R.id.imguserprincipal);
+        SQLiteDatabase db = this.openOrCreateDatabase(BancoSQLite.NOME_BANCO, MODE_PRIVATE, null);
+        Cursor cursor = db.rawQuery("select * from Usuario where Apelido = ?", new String[]{Login});
+        while (cursor.moveToNext())
+        {
+            if (Login.equals(cursor.getString(4)))
+            {
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
+                {
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, COD_IMAGEM_SAVE);
+                }
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
+                {
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, COD_IMAGEM_SAVE);
+                }
+                fotoperfilusuario.setImageURI(Uri.parse(cursor.getString(7)));
+            }
+        }
+
     }
     //sensor que muda a lanterna
     @Override
@@ -217,7 +247,13 @@ public class PrincipalActivity extends AppCompatActivity implements SensorEventL
 
 
     }
+    public void perfilar (View view)
+    {
+            Intent intent = new Intent(this, PerfilActivity.class);
+            intent.putExtra(APELIDO, nomelogin.getText().toString());
+            startActivity(intent);
 
+    }
         }
 
 

@@ -36,39 +36,57 @@ import java.util.List;
 import java.util.Locale;
 
 public class RodaGiganteActivity extends AppCompatActivity implements OnSuccessListener<Location>, OnFailureListener {
+
     private ViewPager2 viewPager2;
+
     Adapter adapter;
+
     ImageView coracao;
+
     TextView endereco;
+
     public static final String IMG_PRE = "img_";
+
     public final static int CODIGO_ADICIONAR = 0;
-    double latitude, longitude, latitude2, longitude2;
     public final static int CODIGO_LOCALIZA = 1;
+
+    double latitude, longitude, latitude2, longitude2;
+
     List<SliderItem> sliderItems = new ArrayList<>();
+
     public String RODA_COD = "com.example.patolandis.RodaGiganteActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_roda_gigante);
+
         endereco = (TextView) findViewById(R.id.txtenderecorg);
+
         coracao= (ImageView) findViewById(R.id.imgfavrodagig);
+
         new SharedFav( this, coracao, RODA_COD);
+
         viewPager2 = findViewById(R.id.viewPagerslider);
 
-        sliderItems.add(new SliderItem(Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
-                "://" + getResources().getResourcePackageName(R.drawable.roda)
-                + '/' + getResources().getResourceTypeName(R.drawable.roda) + '/' + getResources().getResourceEntryName(R.drawable.roda))));
-        sliderItems.add(new SliderItem(Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
-                "://" + getResources().getResourcePackageName(R.drawable.rodaroda)
-                + '/' + getResources().getResourceTypeName(R.drawable.rodaroda) + '/' + getResources().getResourceEntryName(R.drawable.rodaroda))));
-        sliderItems.add(new SliderItem(Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
-                "://" + getResources().getResourcePackageName(R.drawable.rodarodaroda)
-                + '/' + getResources().getResourceTypeName(R.drawable.rodarodaroda) + '/' + getResources().getResourceEntryName(R.drawable.rodarodaroda))));
-        sliderItems.add(new SliderItem(Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
-                "://" + getResources().getResourcePackageName(R.drawable.rodarodarodaroda)
-                + '/' + getResources().getResourceTypeName(R.drawable.rodarodarodaroda) + '/' + getResources().getResourceEntryName(R.drawable.rodarodarodaroda))));
-        adicionarImagensSalvas(sliderItems);
+        java.util.function.Function<Integer, SliderItem> sliderFrom = (resource) -> {
+
+            return new SliderItem(Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
+                    "://" + getResources().getResourcePackageName(resource)
+                    + '/' + getResources().getResourceTypeName(resource) + '/'
+                    + getResources().getResourceEntryName(resource)));
+
+        };
+
+
+        sliderItems.add(sliderFrom.apply(R.drawable.roda));
+        sliderItems.add(sliderFrom.apply(R.drawable.rodaroda));
+        sliderItems.add(sliderFrom.apply(R.drawable.rodarodaroda));
+        sliderItems.add(sliderFrom.apply(R.drawable.rodarodarodaroda));
+
+
         adapter = new Adapter(sliderItems, viewPager2);
+        adicionarImagensSalvas(sliderItems);
         viewPager2.setAdapter(this.adapter);
 
 
@@ -115,31 +133,47 @@ public class RodaGiganteActivity extends AppCompatActivity implements OnSuccessL
         Intent adicionarFoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         startActivityForResult(adicionarFoto, CODIGO_ADICIONAR);
     }
+    private static final String IMAGE_DIRECTORY_NAME = "roda-images";
     public void adicionarImagensSalvas(List<SliderItem> sliderItems)
     {
-        String[] nomes = getFilesDir().list();
-        for (int i = 0; i < nomes.length; i++)
-        {
-            sliderItems.add(new SliderItem(Uri.fromFile(new File(getFilesDir(), nomes[i]))));
+        File directory = new File(getFilesDir(), IMAGE_DIRECTORY_NAME);
+        if (directory.exists()) {
+            String[] nomes = directory.list();
+
+            for (int i = 0; i < nomes.length; i++) {
+                sliderItems.add(new SliderItem(Uri.fromFile(new File(directory, nomes[i]))));
+            }
         }
-
-
     }
     public void salvarArquivo(@NonNull Uri uri ) throws IOException
     {
         try {
-            int arquivos = getFilesDir().list().length;
-            File result = new File(getFilesDir(), IMG_PRE + arquivos + 1);
+            File directory = new File(getFilesDir(), IMAGE_DIRECTORY_NAME);
+            if (!directory.exists()) {
+                if (!directory.mkdir()) {
+                    throw new IOException("Falha na criação da pasta");
+                }
+            }
+
+            int arquivos  = directory.list().length;
+
+            File result = new File(directory, IMG_PRE + arquivos + 1);
+
             if (result.exists()) {
                 return;
             }
+
             OutputStream outputStream = new FileOutputStream(result);
             InputStream inputStream = getContentResolver().openInputStream(uri);
+
             byte[] buffer = new byte[4096];
+
             int size;
+
             while ((size = inputStream.read(buffer)) != -1) {
                 outputStream.write(buffer, 0, size);
             }
+
             inputStream.close();
             outputStream.close();
         }
